@@ -1,10 +1,22 @@
-- 👋 Hi, I’m @prakashchandraroy1
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+service: aws-node-project-api
 
-<!---
-prakashchandraroy1/prakashchandraroy1 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+frameworkVersion: '2 || 3'
+
+plugins:
+  - serverless-api-client-certificate
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http: GET hello
+
+custom:
+  serverlessApiClientCertificate:
+    rotateCerts: true
+    daysLeft: 30
